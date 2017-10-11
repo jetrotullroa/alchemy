@@ -39,8 +39,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :teh_hood, TehHood.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
+  username: "jetrotullroa",
+  password: "",
   database: "teh_hood_dev",
   hostname: "localhost",
   pool_size: 10
