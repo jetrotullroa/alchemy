@@ -5,7 +5,12 @@ defmodule TehHoodWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", TehHoodWeb do
+  scope "/" do
     pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: TehHoodWeb.Schema,
+      interface: :simple,
+      context: %{pubsub: TehHoodWeb.Endpoint}
   end
 end
