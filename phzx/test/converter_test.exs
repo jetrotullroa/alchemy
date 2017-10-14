@@ -2,13 +2,9 @@ defmodule ConverterTest do
   use ExUnit.Case
   doctest Converter
 
-  setup do
-    
-  end
-
-  test "rounded_to_the_nearest_tenth/1" do
-    rounded = Converter.rounded_to_the_nearest_tenth(23.2)
-    assert rounded == is_float
+  test "convert to_light_seconds" do
+    converted = Converter.to_light_seconds({:miles, 1000}, precision: 5)
+    assert converted == 0.00537
   end
 
 end
