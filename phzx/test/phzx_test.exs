@@ -14,4 +14,8 @@ defmodule PhzxTest do
       assert Phxz.Rocketry.escape_velocity(:moon) == 2.4
   end
 
+  test "orbital_acceleration/1" do
+    assert Phxz.Rocketry.orbital_acceleration(100) == 9.6
+  end
+
 end
