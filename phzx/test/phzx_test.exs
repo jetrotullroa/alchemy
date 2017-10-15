@@ -15,7 +15,11 @@ defmodule PhzxTest do
   end
 
   test "orbital_acceleration/1" do
-    assert Phxz.Rocketry.orbital_acceleration(100) == 9.6
+    assert Phxz.Rocketry.orbital_acceleration(100) == 9.512678810620692
+  end
+
+  test "orbital_term/1" do
+    assert Phxz.Rocketry.orbital_term(100) == 1328495384991379500.0
   end
 
 end
