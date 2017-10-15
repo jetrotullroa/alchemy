@@ -12,4 +12,11 @@ defmodule Calcs do
     val * val * val
   end
 
+  def cube_root(val) do
+    square_root(val) / val
+  end
+
+  def pie, do: :math.pi
+  def pie_squared, do: pie |> squared
+
 end

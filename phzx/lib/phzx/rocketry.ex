@@ -16,9 +16,19 @@ defmodule Phxz.Rocketry do
     |> rounded_to_the_nearest_tenth
   end
 
+  def orbital_term(height) do
+    4 * pie_squared * orbital_radius(height) / newton_gravitational_constant * earth.mass
+    |> square_root
+    |> seconds_to_hours
+  end
+
+  def orbital_height(hrs) do
+    newton_gravitational_constant * earth.mass * ( hrs |> squared) / 4 * pie_squared
+    |> cube_root
+  end
+
   def orbital_acceleration(height) do
     (orbital_speed(height) |> squared ) / orbital_radius(height)
-    |> rounded_to_the_nearest_tenth
   end
 
   def orbital_speed(height) do
