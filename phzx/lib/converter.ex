@@ -8,6 +8,10 @@ defmodule Converter do
     m / 1000
   end
 
+  def convert_to_m(km) do
+    km * 1000
+  end
+
   def to_light_seconds(args), do: to_light_seconds(args, precision: 5)
 
   def to_light_seconds({unit, val}, precision: precision) do

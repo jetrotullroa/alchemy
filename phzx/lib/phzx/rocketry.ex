@@ -2,19 +2,12 @@ defmodule Phxz.Rocketry do
 
   import Converter
   import Calcs
+  import Phxz.Laws
+  import Planets
 
-  @moon %{mass: 7.35e22, radius: 1.738e6}
-  @mars %{mass: 6.39e23, radius: 3.4e6}
-  @earth %{mass: 5.972e24, radius: 6.371e6}
-  @newton_constant 6.67e-11
-
-  def escape_velocity(planet) when is_atom(planet) do
-    case planet do
-      :earth -> @earth
-      :mars -> @mars
-      :moon -> @moon
-    end |> escape_velocity
-  end
+  def escape_velocity(:earth) when is_atom(:earth), do: escape_velocity(earth)
+  def escape_velocity(:mars) when is_atom(:mars), do: escape_velocity(mars)
+  def escape_velocity(:moon) when is_atom(:moon), do: escape_velocity(moon)
 
   def escape_velocity(planet) do is_map(planet)
     planet
@@ -23,9 +16,23 @@ defmodule Phxz.Rocketry do
     |> rounded_to_the_nearest_tenth
   end
 
+  def orbital_acceleration(height) do
+    (orbital_speed(height) |> squared ) / orbital_radius(height)
+    |> rounded_to_the_nearest_tenth
+  end
+
+  def orbital_speed(height) do
+    newton_gravitational_constant * earth.mass / orbital_radius(height)
+    |> square_root
+  end
+
+  defp orbital_radius(height) do
+    earth.radius + (height |> convert_to_m)
+  end
+
   defp calculate_escape(%{mass: mass, radius: radius}) do
 
-    2 * @newton_constant * mass / radius
+    2 * newton_gravitational_constant * mass / radius
     |> square_root
   end
 
