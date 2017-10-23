@@ -13,7 +13,20 @@
 
   <body>
     <%= render "navbar.html" %>
-    <h1>Seasonal Products</h1>
+    <%
+      info = get_flash(@conn, :info)
+      error = get_flash(@conn, :error)
+    %>
+    <%= if info do %>
+      <div class="alert alert-info" role="alert"><%= info %></div>
+    <% end %>
+    <%= if error do %>
+      <div class="alert alert-danger" role="alert"><%= error %></div>
+    <% end %>
+
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
