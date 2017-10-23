@@ -13,20 +13,22 @@
 
   <body>
     <%= render "navbar.html" %>
-    <%
+    <div class="container">
+      <%
       info = get_flash(@conn, :info)
       error = get_flash(@conn, :error)
-    %>
-    <%= if info do %>
+      %>
+      <%= if info do %>
       <div class="alert alert-info" role="alert"><%= info %></div>
-    <% end %>
-    <%= if error do %>
+      <% end %>
+      <%= if error do %>
       <div class="alert alert-danger" role="alert"><%= error %></div>
-    <% end %>
+      <% end %>
 
-    <main role="main">
-      <%= render @view_module, @view_template, assigns %>
-    </main>
+      <main role="main">
+        <%= render @view_module, @view_template, assigns %>
+      </main>
+    </div>
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
