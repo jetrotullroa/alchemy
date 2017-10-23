@@ -17,6 +17,7 @@ defmodule Calcs do
   end
 
   def pie, do: :math.pi
+
   def pie_squared, do: pie |> squared
 
 end

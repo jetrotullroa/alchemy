@@ -26,4 +26,5 @@ defmodule SolarTest do
     exceed = Solar.no_eva(flares)
     assert length(exceed) == 3
   end
+
 end

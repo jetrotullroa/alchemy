@@ -21,6 +21,15 @@ use Mix.Config
 #     config :logger, level: :info
 #
 
+config :phxz, Phxz.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "phxz",
+  username: "jetrotullroa",
+  password: "",
+  hostname: "localhost"
+
+config :phxz, ecto_repos: [Phxz.Repo]
+
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
 # by uncommenting the line below and defining dev.exs, test.exs and such.
