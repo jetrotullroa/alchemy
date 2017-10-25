@@ -1,0 +1,7 @@
+<h1 class="page-title"><%= title_capitalize @category_name %></h1>
+<%= for product <- @categorized_products do %>
+<div class="product">
+  <div class="product-name"><%= product.name %></div>
+  <div>$ <span class="product-price"><%= product.price %></span></div>
+</div>
+<% end %>

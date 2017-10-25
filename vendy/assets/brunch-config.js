@@ -19,16 +19,15 @@ exports.config = {
       //   ]
       // }
     },
-
+    templates: {
+      joinTo: "js/app.js"
+    },
     stylesheets: {
       joinTo: "css/app.css",
       // in the files.stylesheets section
       order: {
         after: ["priv/static/css/app.scss"] // concat app.css last
       }
-    },
-    templates: {
-      joinTo: "js/app.js"
     }
   },
 
