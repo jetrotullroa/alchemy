@@ -16,4 +16,10 @@ defmodule Vendy.CatalogTest do
     refute product.name === "Tomato"
   end
 
+  test "get_category_product/1 return products based on category" do
+    [product = %Product{}] = Catalog.get_category_product("fruits")
+
+    refute product.name === "Tomato"
+  end
+
 end
