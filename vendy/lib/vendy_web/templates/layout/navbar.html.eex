@@ -7,13 +7,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Shop <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#">Shop</span></a>
       </li>
-      <li class="nav-item">
-        <a href="/categories/vegetables" class="nav-link">Vegetables</a>
+      <li class="nav-item active">
+        <%= link "Vegetables", to: category_path(@conn, :show, "vegetables"), class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <a href="/categories/fruits" class="nav-link">Fruits</a>
+      <li class="nav-item active">
+        <%= link "Fruits", to: category_path(@conn, :show, "fruits"), class: "nav-link" %>
       </li>
     </ul>
   </div>
