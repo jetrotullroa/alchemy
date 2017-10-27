@@ -1,11 +1,10 @@
 defmodule Vendy.Catalog do
   alias Vendy.Catalog.Product
+  alias Vendy.Repo
 
   def list_products do
-    [
-      %Product{name: "Tomato", price: "23", is_seasonal: false, category: "vegetables"},
-      %Product{name: "Apple", price: "9", is_seasonal: true, category: "fruits"}
-    ]
+    Product
+    |> Repo.all
   end
 
   def list_seasonal_products do
