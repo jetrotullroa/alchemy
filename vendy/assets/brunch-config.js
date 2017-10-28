@@ -48,6 +48,7 @@ exports.config = {
 
   // Configure your plugins
   plugins: {
+    Popper: ["popper.js", "default"],
     babel: {
       // Do not use ES6 compiler in vendor code
       ignore: [/vendor/]
@@ -77,6 +78,7 @@ exports.config = {
       // Bootstrap JavaScript requires both '$', 'jQuery', and Tether in global scope
       $: "jquery",
       jQuery: "jquery",
+      Popper: "popper.js",
       bootstrap: "bootstrap" // require Bootstrap JavaScript globally too
     }
   }
