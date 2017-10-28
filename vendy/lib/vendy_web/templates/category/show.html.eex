@@ -1,7 +1,8 @@
 <h1 class="page-title"><%= title_capitalize @category_name %></h1>
+<div class="row">
 <%= for product <- @categorized_products do %>
-<div class="product">
-  <div class="product-name"><%= product.name %></div>
-  <div>$ <span class="product-price"><%= product.price %></span></div>
-</div>
+  <div class="product col-md-4">
+    <%= render VendyWeb.ProductView, "product_card.html", product: product %>
+  </div>
 <% end %>
+</div>
