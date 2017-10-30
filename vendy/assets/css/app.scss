@@ -1,2 +1,12 @@
 /* This file is for your main application css. */
+
 @import "bootstrap";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.content {
+  margin: 1rem auto;
+}

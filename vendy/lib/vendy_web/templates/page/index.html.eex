@@ -1,7 +1,7 @@
 <h1 class="page-title">Seasonal Products</h1>
 <div class="row">
   <%= for product <- @seasonal_products do %>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <%= render VendyWeb.ProductView, "product_card.html", product: product %>
   </div>
   <% end %>
