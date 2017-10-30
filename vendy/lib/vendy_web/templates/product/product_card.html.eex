@@ -2,9 +2,12 @@
   <img src="<%= @product.image %>" alt="image of <%= @product.name %>" class="card-img-top" height="150px">
   <div class="card-body">
     <h4 class="product-name card-title"><%= @product.name %></h4>
-    <p>
-      $ <span class="product-price card-text"><%= @product.price %></span>
-      <span class="pull-right"><%= @product.pack_size %></span>
-    </p>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">$ <span class="product-price"><%= @product.price %></span></li>
+    <li class="list-group-item"><%= @product.pack_size %></li>
+  </ul>
+  <div class="card-body">
+    <a class="btn btn-block btn-success text-white">Buy Now</a>
   </div>
 </div>
