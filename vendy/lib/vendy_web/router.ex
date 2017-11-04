@@ -18,6 +18,8 @@ defmodule VendyWeb.Router do
 
     get "/", PageController, :index
     get "/categories/:category", CategoryController, :show
+    get "/register", RegistrationController, :new
+    post "/register", RegistrationController, :create
   end
 
   # Other scopes may use custom stacks.
