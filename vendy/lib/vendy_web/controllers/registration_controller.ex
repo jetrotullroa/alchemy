@@ -4,7 +4,8 @@ defmodule VendyWeb.RegistrationController do
 
   def new(conn, _params) do
     changeset = CRM.build_customer()
-    render(conn, "new.html", changeset: changeset)
+    residence_areas = Auroville.ResidenceService.list_areas
+    render(conn, "new.html", changeset: changeset, residence_areas: residence_areas)
   end
 
   def create(conn, %{"registration" => registration_data}) do
@@ -14,8 +15,9 @@ defmodule VendyWeb.RegistrationController do
         |> put_flash(:info, "Registration Successful!")
         |> redirect(to: page_path(conn, :index))
       {:error, changeset} ->
+        residence_areas = Auroville.ResidenceService.list_areas
         conn
-        |> render(:new, changeset: changeset)
+        |> render(:new, changeset: changeset, residence_areas: residence_areas)
     end
   end
 end
