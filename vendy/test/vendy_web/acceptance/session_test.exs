@@ -20,9 +20,9 @@ defmodule VendyWeb.Acceptance.SessionTest do
   test "show sucessfully login" do
     navigate_to("/login")
     form = find_element(:id, "session-form")
-    find_within_element(form, :css, "session[email]") |> fill_field("johndoe@example.com")
-    find_within_element(form, :css, "session[password]") |> fill_field("secrets")
-    find_within_element(form, :tag, button) |> click
+    find_within_element(form, :name, "session[email]") |> fill_field("johndoe@example.com")
+    find_within_element(form, :name, "session[password]") |> fill_field("secrets")
+    find_within_element(form, :tag, "button") |> click
 
     assert current_path == "/"
     message = find_element(:class, "alert") |> visible_text
@@ -31,7 +31,7 @@ defmodule VendyWeb.Acceptance.SessionTest do
 
   test "show error for invalid credentials" do
     navigate_to("/login")
-    form = find_element(:css, "session-form")
+    form = find_element(:id, "session-form")
     find_within_element(form, :tag, "button") |> click
 
     message = find_element(:class, "alert") |> visible_text
