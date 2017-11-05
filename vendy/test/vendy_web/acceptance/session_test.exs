@@ -35,6 +35,6 @@ defmodule VendyWeb.Acceptance.SessionTest do
     find_within_element(form, :tag, "button") |> click
 
     message = find_element(:class, "alert") |> visible_text
-    assert message == "Invalid Credentials"
+    assert message == "Invalid user email/password combination"
   end
 end
