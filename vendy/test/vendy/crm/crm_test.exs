@@ -13,4 +13,30 @@ defmodule Vendy.CRMTest do
     assert changeset.params == attrs
   end
 
+  test "get_customer_by_email/1" do
+    valid_attrs = %{
+      "name" => "John Doe",
+      "email" => "johndoe@example.com",
+      "password" => "secret",
+      "residence_area" => "Area 1",
+      "phone" => "2222"
+    }
+    {:ok, customer1} = CRM.create_customer(valid_attrs)
+    customer2 = CRM.get_customer_by_email("johndoe@example.com")
+    assert customer1.id == customer2.id
+  end
+
+  test "get_customer_by_credentials/1" do
+    valid_attrs = %{
+      "name" => "John Doe",
+      "email" => "johndoe@example.com",
+      "password" => "secret",
+      "residence_area" => "Area 1",
+      "phone" => "2222"
+    }
+    {:ok, customer1} = CRM.create_customer(valid_attrs)
+    customer2 = CRM.get_customer_by_credentials(%{"email" => "johndoe@example.com", "password" => "secret"})
+    assert customer1.id == customer2.id
+  end
+
 end
