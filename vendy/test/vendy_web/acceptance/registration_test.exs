@@ -11,8 +11,8 @@ defmodule VendyWeb.Acceptance.RegistrationTest do
     find_within_element(form, :name, "registration[name]") |> fill_field("John")
     find_within_element(form, :name, "registration[email]") |> fill_field("john@example.com")
     find_within_element(form, :name, "registration[phone]") |> fill_field("1111")
-    find_within_element(form, :name, "registration[residence_area]") |> fill_field("Area 1")
     find_within_element(form, :name, "registration[password]") |> fill_field("password")
+    find_element(:css, "#registration_residence_area option[value='Area 1']") |> click
     find_within_element(form, :tag, "button") |> click
 
     assert current_path == "/"
