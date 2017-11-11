@@ -17,6 +17,10 @@ defmodule Vendy.CRM do
     Repo.get_by(Customer, email: email)
   end
 
+  def get_customer_by_id(id) do
+    Repo.get(Customer, id)
+  end
+
   def get_customer_by_credentials(%{"email" => email, "password" => password}) do
     customer = get_customer_by_email(email)
 
@@ -27,4 +31,5 @@ defmodule Vendy.CRM do
         :error
     end
   end
+
 end

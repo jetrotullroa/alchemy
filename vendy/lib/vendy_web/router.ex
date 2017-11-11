@@ -7,6 +7,7 @@ defmodule VendyWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug VendyWeb.Plugs.LoadCustomer
   end
 
   pipeline :api do
