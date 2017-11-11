@@ -13,6 +13,7 @@
 alias NimbleCSV.RFC4180, as: CSV
 alias Vendy.Catalog.Product
 alias Vendy.Repo
+alias Vendy.CRM
 
 "priv/seed_data/product_list.csv"
 |> File.read!
@@ -30,3 +31,11 @@ alias Vendy.Repo
       category: category
     } |> Repo.insert
   end )
+
+%{"name" => "Xample Uzer",
+  "email" => "email@example.com",
+  "password" => "password",
+  "residence_area" => "Area 1",
+  "phone" => "4444"
+}
+|> CRM.create_customer
