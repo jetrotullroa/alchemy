@@ -21,4 +21,10 @@ defmodule VendyWeb.SessionController do
         |> redirect(to: page_path(conn, :index))
     end
   end
+
+  def delete(conn, _params) do
+    clear_session(conn)
+    |>put_flash(:info, "You are successfully logged out.")
+    |> redirect(to: page_path(conn, :index))
+  end
 end
