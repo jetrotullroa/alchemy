@@ -8,6 +8,14 @@
     <li class="list-group-item"><%= @product.pack_size %></li>
   </ul>
   <div class="card-body">
-    <a class="btn btn-block btn-success text-white">Buy Now</a>
+    <%= form_for @conn, "/cart", [as: :cart], fn f -> %>
+      <div class="input-group">
+        <%= hidden_input f, :product_id, value: @product.id %>
+        <%= number_input f, :quantity, value: 1, class: "form-control" %>
+        <span class="input-group-btn">
+          <%= submit "Add to Cart", class: "btn btn-block btn-success text-white" %>
+        </span>
+      </div>
+    <% end %>
   </div>
 </div>
