@@ -37,4 +37,11 @@ defmodule VendyWeb.Acceptance.SessionTest do
     message = find_element(:class, "alert") |> visible_text
     assert message == "Invalid user email/password combination"
   end
+
+  test "show logout message" do
+    navigate_to("/logout")
+
+  message = find_element(:class, "alert") |> visible_text
+    assert message == "You are successfully logged out."
+  end
 end
