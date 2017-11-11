@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <%= render "navbar.html", conn: @conn %>
+    <%= render "navbar.html", conn: @conn, customer: @current_customer %>
     <div class="container content">
       <%
       info = get_flash(@conn, :info)
