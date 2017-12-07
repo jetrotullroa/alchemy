@@ -18,6 +18,10 @@ defmodule AlchetempOtp.Worker do
     GenServer.cast(pid, :reset_state)
   end
 
+  def stop(pid) do
+    GenServer.cast(pid, :stop)
+  end
+
 
   # SERVER
   def init(:ok) do
@@ -42,8 +46,22 @@ defmodule AlchetempOtp.Worker do
     {:noreply, %{}}
   end
 
+  def handle_cast(:stop, state) do
+    {:stop, :normal, state}
+  end
+
+  def handle_info(msg, state) do
+    IO.puts "received #{inspect msg}"
+    {:noreply, state}
+  end
+
   # CALLBACK HELPERS
 
+  def terminate(reason, state) do
+    IO.puts "server terminated because of #{inspect reason}"
+    inspect state
+    :ok
+  end
 
   defp temperature_of(location) do
     url_for(location) |> HTTPoison.get |> parse_response
