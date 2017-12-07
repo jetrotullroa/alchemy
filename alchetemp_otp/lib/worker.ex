@@ -10,6 +10,14 @@ defmodule AlchetempOtp.Worker do
     GenServer.call(pid, {:location, location})
   end
 
+  def get_state(pid) do
+    GenServer.call(pid, :get_state)
+  end
+
+  def reset_state(pid) do
+    GenServer.cast(pid, :reset_state)
+  end
+
 
   # SERVER
   def init(:ok) do
@@ -20,10 +28,18 @@ defmodule AlchetempOtp.Worker do
     case temperature_of(location) do
       {:ok, temp} ->
         new_state = update_state(state, location)
-        {:reply, "#{temp} C", state}
+        {:reply, "#{temp} C", new_state}
       _error ->
         {:reply, :error, state}
     end
+  end
+
+  def handle_call(:get_state, _from, state) do
+    {:reply, state, state}
+  end
+
+  def handle_cast(:reset_state, _state) do
+    {:noreply, %{}}
   end
 
   # CALLBACK HELPERS
