@@ -12,9 +12,9 @@ defmodule VendyWeb.CartController do
         conn
         |> put_flash(:info, message)
         |> redirect(to: page_path(conn, :index))
-      {:error, _ }
+      {:error, _ } ->
         conn
-        |> put_flash(:info, message)
+        |> put_flash(:info, "Error adding product to cart.")
         |> redirect(to: page_path(conn, :index))
     end
   end
