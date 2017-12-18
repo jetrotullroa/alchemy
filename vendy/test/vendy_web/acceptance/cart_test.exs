@@ -31,5 +31,18 @@ defmodule VendyWeb.CartTest do
 
     [ product | _rest ] = find_all_elements(:css, ".product-thumbnail")
     product_name = find_within_element(product, :name, "cart[product_name]")
+    |> attribute_value("value")
+
+    pack_size = find_within_element(product, :name, "cart[pack_size]")
+    |> attribute_value("value")
+
+    find_within_element(product, :name, "cart[quantity]")
+    |> fill_field(2)
+
+    find_within_element(product, :tag, "button") |> click
+
+    message = find_element(:css, ".alert") |> visible_text
+
+    assert message = "Product added to cart - #{product_name}(#{pack_size}) x 2 qty"
   end
 end

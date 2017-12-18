@@ -1,5 +1,5 @@
 <div class="product card" style="margin: 1rem 0">
-  <img src="<%= @product.image %>" alt="image of <%= @product.name %>" class="card-img-top" height="150px">
+  <img src="<%= @product.image %>" alt="image of <%= @product.name %>" class="card-img-top product-thumbnail" height="150px">
   <div class="card-body">
     <h4 class="product-name card-title"><%= @product.name %></h4>
   </div>

@@ -26,6 +26,8 @@ defmodule VendyWeb.Router do
     get "/login", SessionController, :new
     post "/login", SessionController, :create
     get "/logout", SessionController, :delete
+    # CART
+    post "/cart", CartController, :add
 
   end
 
