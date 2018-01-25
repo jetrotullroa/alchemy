@@ -1,6 +1,9 @@
 defmodule Dolistto.Mixfile do
   use Mix.Project
 
+  @path_env %{dev: "todos.csv", test: "todos_test.csv"}
+  @path Path.join(["lib", @path_env[Mix.env]])
+
   def project do
     [
       app: :dolistto,
