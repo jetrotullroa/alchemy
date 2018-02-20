@@ -13,7 +13,7 @@ defmodule VendyWeb.CartTest do
     :ok
   end
 
-  test "presence of cart form for each prodcut" do
+  test "presence of cart form for each product" do
     navigate_to("/")
 
     products = find_all_elements(:css, ".product")
@@ -29,14 +29,14 @@ defmodule VendyWeb.CartTest do
   test "add to cart" do
     navigate_to("/")
 
-    [ product | _rest ] = find_all_elements(:css, ".product-thumbnail")
+    [ product | _rest ] = find_all_elements(:css, ".product-card")
     product_name = find_within_element(product, :name, "cart[product_name]")
     |> attribute_value("value")
 
     pack_size = find_within_element(product, :name, "cart[pack_size]")
     |> attribute_value("value")
 
-    find_within_element(product, :name, "cart[quantity]")
+    quantity = find_within_element(product, :name, "cart[quantity]")
     |> fill_field(2)
 
     find_within_element(product, :tag, "button") |> click
