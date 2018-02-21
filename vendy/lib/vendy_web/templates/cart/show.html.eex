@@ -1,0 +1,32 @@
+<h1>Cart</h1>
+<%= if Enum.empty?(@cart.line_items) do %>
+  <p>Your Cart is Empty</p>
+<% else %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Pack Size</th>
+        <th>Quantity</th>
+        <th>Unit Price</th>
+        <th>Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for cart <- @cart.line_items do %>
+        <tr>
+          <td><%= cart.product_name %></td>
+          <td><%= cart.pack_size %></td>
+          <td><%= cart.quantity %></td>
+          <td><%= cart.unit_price %></td>
+          <td><%= cart.total %></td>
+        </tr>
+        <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Total Amount: <strong>$<%= @cart.total %></strong></td>
+      </tr>
+    </tfoot>
+  </table>
+<% end %>

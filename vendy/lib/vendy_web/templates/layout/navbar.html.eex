@@ -19,10 +19,16 @@
     <div class="dropdown-divider"></div>
     <ul class="navbar-nav justify-content-end">
       <%= if @customer do %>
+      <li class="nav-item"><%= link "Cart", to: cart_path(@conn, :show), class: "nav-link" %></li>
       <li class="nav-item"><%= link "Hi, #{@customer.name}", to: "#", class: "nav-link" %></li>
-      <li class="nav-item"><%= link "Logout", to: "#", class: "nav-link" %></li>
+      <li class="nav-item"><%= link "Logout", to: session_path(@conn, :delete), class: "nav-link" %></li>
       <% else %>
       <li class="nav-item">
+        <li class="nav-item">
+          <%= link to: cart_path(@conn, :show), class: "cart nav-link" do %>
+            <i class="fa fa-shopping-cart fa-2x"></i>
+          <% end %>
+        </li>
         <%= link "Register", to: registration_path(@conn, :new), class: "nav-link" %>
       </li>
       <li class="nav-item">
