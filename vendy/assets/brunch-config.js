@@ -41,7 +41,7 @@ exports.config = {
   // Phoenix paths configuration
   paths: {
     // Dependencies and current project directories to watch
-    watched: ["static", "css", "js", "vendor"],
+    watched: ["static", "css", "js", "vendor", "scss", "fonts"],
     // Where to compile files to
     public: "../priv/static"
   },
@@ -57,11 +57,16 @@ exports.config = {
     sass: {
       options: {
         includePaths: [
-          "node_modules/bootstrap/scss",
-          "node_modules/font-awesome/scss"
+          "node_modules/font-awesome/scss",
+          "node_modules/bootstrap/scss"
         ], // tell sass-brunch where to look for files to @import
         precision: 8 // minimum precision required by bootstrap
       }
+    },
+    copycat: {
+      fonts: ["static/fonts", "node_modules/font-awesome/fonts"],
+      verbose: false, //shows each file that is copied to the destination directory
+      onlyChanged: true //only copy a file if it's modified time has changed (only effective when using brunch watch)
     }
   },
 
