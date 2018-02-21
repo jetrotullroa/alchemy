@@ -24,15 +24,16 @@
       <li class="nav-item"><%= link "Logout", to: session_path(@conn, :delete), class: "nav-link" %></li>
       <% else %>
       <li class="nav-item">
-        <li class="nav-item">
-          <%= link to: cart_path(@conn, :show), class: "cart nav-link" do %>
-            <i class="fa fa-shopping-cart fa-2x"></i>
-          <% end %>
-        </li>
         <%= link "Register", to: registration_path(@conn, :new), class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link "Login", to: session_path(@conn, :new), class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link to: cart_path(@conn, :show), class: "cart nav-link" do %>
+          <i class="fa fa-shopping-cart fa-2x"></i>
+          <span class="badge badge-info badge-pill align-top"><%= cart_count(@conn) %></span>
+        <% end %>
       </li>
       <% end %>
     </ul>
