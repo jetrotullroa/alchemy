@@ -30,6 +30,7 @@ defmodule VendyWeb.Router do
     # CART
     post "/cart", CartController, :add
     get "/cart", CartController, :show
+    put "/cart", CartController, :update
 
   end
 
