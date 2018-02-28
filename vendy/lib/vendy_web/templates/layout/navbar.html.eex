@@ -38,7 +38,7 @@
       <li class="nav-item">
         <%= link to: cart_path(@conn, :show), class: "cart nav-link" do %>
           <i class="fa fa-shopping-cart fa-2x"></i>
-          <span class="badge badge-success badge-pill align-top"><%= cart_count(@conn) %></span>
+          <span class="badge badge-success badge-pill align-top cart-count"><%= cart_count(@conn) %></span>
         <% end %>
       </li>
       <% end %>

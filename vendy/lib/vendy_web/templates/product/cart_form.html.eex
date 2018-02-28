@@ -1,4 +1,4 @@
-<%= form_for @conn, "/cart", [as: :cart], fn f -> %>
+<%= form_for @conn, "/cart", [as: :cart, class: "cart-form"], fn f -> %>
   <div class="input-group">
     <%= hidden_input f, :product_name, value: @product.name %>
     <%= hidden_input f, :pack_size, value: @product.pack_size %>
