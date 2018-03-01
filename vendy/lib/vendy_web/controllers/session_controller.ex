@@ -13,12 +13,13 @@ defmodule VendyWeb.SessionController do
         |> put_flash(:error, "Invalid user email/password combination")
         |> render("new.html")
       customer ->
+        path = get_session(conn, :intendent_path) || page_path(conn, :index)
         conn
         |> assign(:current_customer, customer)
         |> put_session(:customer_id, customer.id)
         |> configure_session(renew: true)
         |> put_flash(:info, "Login successful!")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: path)
     end
   end
 

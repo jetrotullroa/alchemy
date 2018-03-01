@@ -9,6 +9,7 @@ defmodule VendyWeb.Plugs.AuthenticateCustomer do
       nil ->
         conn
         |> put_flash(:info, "You must be logged in to continue this action.")
+        |> put_session(:intendent_path, conn.request_path)
         |> redirect(to: "/login")
         |> halt
       _ ->
