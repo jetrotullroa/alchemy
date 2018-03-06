@@ -47,6 +47,7 @@ defmodule VendyWeb.Router do
     get "/logout", SessionController, :delete
     # CHECKOUT
     get "/checkout", CheckoutController, :edit
+    put "/checkout/confirm", CheckoutController, :update
   end
 
   # Other scopes may use custom stacks.
