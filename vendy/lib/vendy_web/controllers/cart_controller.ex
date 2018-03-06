@@ -33,5 +33,4 @@ defmodule VendyWeb.CartController do
         |> redirect(to: cart_path(conn,:show))
       end
   end
-
-end
+ end

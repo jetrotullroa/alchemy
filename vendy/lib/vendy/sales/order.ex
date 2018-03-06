@@ -7,18 +7,30 @@ defmodule Vendy.Sales.Order do
   schema "orders" do
     field :status, :string
     field :total, :decimal
+    field :comments, :string
+    field :customer_id, :integer
+    field :customer_name, :string
+    field :customer_email, :string
+    field :residence_area, :string
     embeds_many :line_items, LineItem, on_replace: :delete
 
     timestamps()
   end
 
-  @doc false
   def changeset(%Order{} = order, attrs) do
     order
     |> cast(attrs, [:status, :total])
     |> cast_embed(:line_items, required: true, with: &LineItem.changeset/2)
     |> set_order_total
     |> validate_required([:status, :total, :line_items])
+  end
+
+  @doc false
+  def checkout_changeset(%Order{} = order, attrs) do
+    changeset(order, attrs)
+    |> cast(attrs, [:customer_id, :customer_name, :customer_email, :residence_area, :comments])
+    |> validate_required([:customer_id, :customer_name, :customer_email, :residence_area, :comments])
+    |> cast_embed(:line_items, required: true, with: &LineItem.changeset/2)
   end
 
   defp set_order_total(changeset) do
