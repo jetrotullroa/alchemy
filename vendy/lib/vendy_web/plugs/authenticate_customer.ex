@@ -8,8 +8,8 @@ defmodule VendyWeb.Plugs.AuthenticateCustomer do
     case conn.assigns[:current_customer] do
       nil ->
         conn
-        |> put_flash(:info, "You must be logged in to continue this action.")
         |> put_session(:intendent_path, conn.request_path)
+        |> put_flash(:info, "You must be logged in to continue this action.")
         |> redirect(to: "/login")
         |> halt
       _ ->

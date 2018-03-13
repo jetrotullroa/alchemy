@@ -19,15 +19,9 @@
     <div class="dropdown-divider"></div>
     <ul class="navbar-nav justify-content-end">
       <%= if @customer do %>
-      <li class="nav-item"><%= link "Cart", to: cart_path(@conn, :show), class: "nav-link" %></li>
       <li class="nav-item"><%= link "Hi, #{@customer.name}", to: "#", class: "nav-link" %></li>
+      <li class="nav-item"><%= link "Manage Order", to: order_path(@conn, :index), class: "nav-link" %></li>
       <li class="nav-item"><%= link "Logout", to: session_path(@conn, :delete), class: "nav-link" %></li>
-      <li class="nav-item">
-        <%= link to: cart_path(@conn, :show), class: "cart nav-link" do %>
-          <i class="fa fa-shopping-cart fa-2x"></i>
-          <span class="badge badge-success badge-pill align-top"><%= cart_count(@conn) %></span>
-        <% end %>
-      </li>
       <% else %>
       <li class="nav-item">
         <%= link "Register", to: registration_path(@conn, :new), class: "nav-link" %>
@@ -35,13 +29,13 @@
       <li class="nav-item">
         <%= link "Login", to: session_path(@conn, :new), class: "nav-link" %>
       </li>
+      <% end %>
       <li class="nav-item">
         <%= link to: cart_path(@conn, :show), class: "cart nav-link" do %>
           <i class="fa fa-shopping-cart fa-2x"></i>
           <span class="badge badge-success badge-pill align-top cart-count"><%= cart_count(@conn) %></span>
         <% end %>
       </li>
-      <% end %>
     </ul>
   </div>
 </nav>

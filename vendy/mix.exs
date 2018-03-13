@@ -19,7 +19,7 @@ defmodule Vendy.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Vendy.Application, []},
+      mod: {Vendy.Application, [:timex]},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -43,7 +43,8 @@ defmodule Vendy.Mixfile do
       {:cowboy, "~> 1.0"},
       {:hound, "~> 1.0"},
       {:nimble_csv, "~> 0.2.0"},
-      {:comeonin, "~> 3.0"}
+      {:comeonin, "~> 3.0"},
+      {:timex, "~> 3.1"}
     ]
   end
 

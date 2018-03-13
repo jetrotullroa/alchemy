@@ -2,6 +2,24 @@ defmodule Vendy.Sales do
   alias Vendy.Repo
   alias Vendy.Sales.Order
 
+  import Ecto.Query
+
+  def list_order do
+    Order
+    |> order_by(desc: :inserted_at)
+    |> Repo.all
+  end
+
+  def get_orders_by_customer(customer) do
+    list_order
+    |> Enum.filter(fn order -> order.customer_id == customer.id end)
+  end
+
+  def get_order(id) do
+    Order
+    |> Repo.get(id)
+  end
+
   def get_cart(id) do
     Order
     |> Repo.get_by(id: id, status: "In Cart")
@@ -35,6 +53,15 @@ defmodule Vendy.Sales do
     cart
     |> Order.changeset(attrs)
     |> Repo.update
+  end
+
+  def associate_user_from_session(conn, params) do
+    customer = conn.assigns.current_customer || conn
+    params
+    |> Map.put("customer_id", customer.id)
+    |> Map.put("customer_name", customer.name)
+    |> Map.put("residence_area", customer.residence_area)
+    |> Map.put("customer_email", customer.email)
   end
 
   def confirm_order(%Order{} = order, attrs) do

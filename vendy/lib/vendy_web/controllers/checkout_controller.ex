@@ -10,7 +10,7 @@ defmodule VendyWeb.CheckoutController do
 
   def update(conn, %{"order" => order_params}) do
     order = conn.assigns.cart
-    order_params = associate_user_from_session(conn, order_params)
+    order_params = Sales.associate_user_from_session(conn, order_params)
     case Sales.confirm_order(order, order_params) do
       {:ok, _} ->
         conn
@@ -19,14 +19,5 @@ defmodule VendyWeb.CheckoutController do
       {:error, order_changeset} ->
         render conn, "edit.html", order: order, order_changeset: order_changeset
     end
-  end
-
-  defp associate_user_from_session(conn, params) do
-    customer = conn.assigns.current_customer
-    params
-    |> Map.put("customer_id", customer.id)
-    |> Map.put("customer_name", customer.name)
-    |> Map.put("residence_area", customer.residence_area)
-    |> Map.put("customer_email", customer.email)
   end
 end

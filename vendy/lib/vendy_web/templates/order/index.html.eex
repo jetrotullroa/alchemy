@@ -1,0 +1,44 @@
+<h1 class="page-title">My Orders</h1>
+<%= if Enum.empty?(@orders) do %>
+  <p class="orders">You do not have any orders yet.</p>
+<% else %>
+
+  <table class="table table-striped col-md-12 orders">
+    <thead>
+      <tr>
+        <th class="text-center">Order ID</th>
+        <th>Products Ordered</th>
+        <th>Status</th>
+        <th>Total</th>
+        <th class="text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= for order <- @orders do %>
+        <tr>
+          <td class="text-center align-middle order-id"><%= order.id %></td>
+          <td  class="align-middle order-line-items">
+            <%= if Enum.empty?(order.line_items) do %>
+              Cart is empty
+            <% else %>
+              <%= for item <- order.line_items do %>
+              <p class="order-item"><%= item.product_name %> (<%= item.pack_size %>) x <%= item.quantity %></p>
+              <% end %>
+            <% end %>
+          </td>
+          <td  class="align-middle order-status"><%= order.status %></td>
+          <td  class="align-middle order-total">
+            <%= if order.total == nil do %>
+              $ 0
+            <% else %>
+              $ <%= order.total %>
+            <% end %>
+          </td>
+          <td class="align-middle text-center order-view">
+            <%= link "View Full Details",to: order_path(@conn, :show, order.id ), class: "btn btn-info btn-sm view-order-details" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

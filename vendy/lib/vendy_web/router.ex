@@ -48,6 +48,9 @@ defmodule VendyWeb.Router do
     # CHECKOUT
     get "/checkout", CheckoutController, :edit
     put "/checkout/confirm", CheckoutController, :update
+    # ORDERS
+    get "/orders", OrderController, :index
+    get "/orders/:order_id", OrderController, :show
   end
 
   # Other scopes may use custom stacks.
