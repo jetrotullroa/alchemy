@@ -51,6 +51,8 @@ defmodule VendyWeb.Router do
     # ORDERS
     get "/orders", OrderController, :index
     get "/orders/:order_id", OrderController, :show
+    # SUPPORT TICKET
+    resources "/tickets", TicketController, except: [:edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.
