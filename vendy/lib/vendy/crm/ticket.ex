@@ -1,14 +1,14 @@
 defmodule Vendy.CRM.Ticket do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Vendy.CRM.Ticket
+  alias Vendy.CRM.{Ticket, Customer}
 
 
   schema "tickets" do
     field :message, :string
     field :status, :string
     field :subject, :string
-    field :customer_id, :id
+    belongs_to :customer, Customer
 
     timestamps()
   end

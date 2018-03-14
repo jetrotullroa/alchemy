@@ -46,6 +46,18 @@ defmodule Vendy.CRM do
     Repo.all(Ticket)
   end
 
+  def list_customer_tickets(customer) do
+    customer
+    |> Ecto.assoc(:tickets)
+    |> Repo.all
+  end
+
+  def get_customer_ticket!(customer, id) do
+    customer
+    |> Ecto.assoc(:tickets)
+    |> Repo.get!(id)  
+  end
+
   @doc """
   Gets a single ticket.
 
@@ -74,9 +86,8 @@ defmodule Vendy.CRM do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_ticket(attrs \\ %{}) do
-    %Ticket{}
-    |> Ticket.changeset(attrs)
+  def create_ticket(%Customer{} = customer, attrs \\ %{}) do
+    build_customer_ticket(customer, attrs)
     |> Repo.insert()
   end
 
@@ -107,7 +118,8 @@ defmodule Vendy.CRM do
       %Ecto.Changeset{source: %Ticket{}}
 
   """
-  def change_ticket(%Ticket{} = ticket) do
-    Ticket.changeset(ticket, %{})
+  def build_customer_ticket(%Customer{} = customer, attrs \\ %{}) do
+    Ecto.build_assoc(customer, :tickets, status: "New")
+    |> Ticket.changeset(attrs)
   end
 end
