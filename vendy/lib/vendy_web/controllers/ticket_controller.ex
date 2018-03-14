@@ -5,13 +5,13 @@ defmodule VendyWeb.TicketController do
   alias Vendy.CRM.Ticket
 
   def index(conn, _params) do
-    customer = conn.assigns.customer
+    customer = conn.assigns.current_customer
     tickets = CRM.list_customer_tickets(customer)
     render(conn, "index.html", tickets: tickets)
   end
 
   def show(conn, %{"id" => id}) do
-    customer = conn.assigns.customer
+    customer = conn.assigns.current_customer
     ticket = CRM.get_customer_ticket!(customer, id)
     render(conn, "show.html", ticket: ticket)
   end
