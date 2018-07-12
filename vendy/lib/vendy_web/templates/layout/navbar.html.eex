@@ -46,6 +46,18 @@
           <span class="badge badge-success badge-pill align-top cart-count"><%= cart_count(@conn) %></span>
         <% end %>
       </li>
+      <li class="nav-item">
+        <div class="dropdown">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Il8n
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <%= link "English", to: "?locale=en", class: "dropdown-item" %>
+            <%= link "Français", to: "?locale=fr", class: "dropdown-item" %>
+            <%= link "Deutsche", to: "?locale=de", class: "dropdown-item" %>
+          </div>
+        </div>
+      </li>
     </ul>
   </div>
 </nav>

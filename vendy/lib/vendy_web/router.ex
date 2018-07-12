@@ -16,6 +16,7 @@ defmodule VendyWeb.Router do
   pipeline :frontend do
     plug VendyWeb.Plugs.LoadCustomer
     plug VendyWeb.Plugs.FetchCart
+    plug VendyWeb.Plugs.Locale
   end
 
   pipeline :authenticate_customer do

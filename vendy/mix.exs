@@ -39,12 +39,13 @@ defmodule Vendy.Mixfile do
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:gettext, "~> 0.11"},
+      {:gettext, "~> 0.15.0"},
       {:cowboy, "~> 1.0"},
       {:hound, "~> 1.0"},
       {:nimble_csv, "~> 0.2.0"},
       {:comeonin, "~> 3.0"},
-      {:timex, "~> 3.1"}
+      {:timex, "~> 3.1"},
+      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}
     ]
   end
 

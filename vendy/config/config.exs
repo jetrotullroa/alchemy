@@ -17,6 +17,10 @@ config :vendy, VendyWeb.Endpoint,
   pubsub: [name: Vendy.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Config Locales
+config :vendy, VendyWeb.Gettext,
+  default_locale: "fr"
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
