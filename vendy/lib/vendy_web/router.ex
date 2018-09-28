@@ -26,6 +26,8 @@ defmodule VendyWeb.Router do
   # Unauthenticated scope
   scope "/", VendyWeb do
     pipe_through [:browser, :frontend]
+    # ADMIN
+    resources "/admin/users", Admin.UserController
     # PRODUCTS
     get "/", PageController, :index
     get "/categories/:category", CategoryController, :show
@@ -54,6 +56,8 @@ defmodule VendyWeb.Router do
     get "/orders/:order_id", OrderController, :show
     # SUPPORT TICKET
     resources "/tickets", TicketController, except: [:edit, :update, :delete]
+    # ADMIN
+    resources "/admin/users", Admin.UserController
   end
 
   # Other scopes may use custom stacks.
