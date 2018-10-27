@@ -27,5 +27,4 @@ defmodule Practice.BankAccountTest do
   test "Check balance of an account", %{account1: _account1, account2: account2} do
     assert BankAccount.check_balance(account2) === @account2_amount
   end
-
 end

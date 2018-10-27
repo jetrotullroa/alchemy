@@ -79,5 +79,4 @@ defmodule Practice.BankAccount do
   def handle_call(:balance, _from, balance) do
     {:reply, balance, balance}
   end
-
 end
