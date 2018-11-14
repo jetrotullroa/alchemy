@@ -1,5 +1,6 @@
 defmodule Practice.Todos do
   use GenServer
+
   @moduledoc """
     User should be able to create a todo list, add, remove and view the todo list.
   """
