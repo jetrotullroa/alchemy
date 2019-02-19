@@ -3,13 +3,13 @@ defmodule Vendy.Repo.Migrations.CreateUsers do
 
   def change do
     create table(:users) do
-      add :name, :string
-      add :email, :string
-      add :phone, :string
+      add(:name, :string)
+      add(:email, :citext)
+      add(:phone, :string)
 
       timestamps()
     end
 
-    create unique_index(:users, [:email])
+    create(unique_index(:users, [:email]))
   end
 end

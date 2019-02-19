@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/admin/users">vendy | ADMIN</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Shop</span></a>
+        </li>
+        <li class="nav-item active">
+          <%= link "Vegetables", to: category_path(@conn, :show, "vegetables"), class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link "Fruits", to: category_path(@conn, :show, "fruits"), class: "nav-link" %>
+        </li>
+      </ul>
+      <div class="dropdown-divider"></div>
+      <ul class="navbar-nav justify-content-end">
+
+        <li class="nav-item">
+          <div class="dropdown">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              Il8n
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <%= link "English", to: "?locale=en", class: "dropdown-item" %>
+              <%= link "Français", to: "?locale=fr", class: "dropdown-item" %>
+              <%= link "Deutsche", to: "?locale=de", class: "dropdown-item" %>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  

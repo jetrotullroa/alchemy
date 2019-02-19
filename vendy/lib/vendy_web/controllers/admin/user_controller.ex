@@ -6,7 +6,10 @@ defmodule VendyWeb.Admin.UserController do
 
   def index(conn, _params) do
     users = Administration.list_users()
-    render(conn, "index.html", users: users)
+
+    conn
+    |> put_layout("admin_app.html")
+    |> render("index.html", users: users)
   end
 
   def new(conn, _params) do
@@ -19,7 +22,8 @@ defmodule VendyWeb.Admin.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User created successfully.")
-        |> redirect(to: admin_user_path(conn, :show, user))
+        |> redirect(to: "/admin/users/#{user.id}", user: user)
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -43,7 +47,8 @@ defmodule VendyWeb.Admin.UserController do
       {:ok, user} ->
         conn
         |> put_flash(:info, "User updated successfully.")
-        |> redirect(to: admin_user_path(conn, :show, user))
+        |> redirect(to: "/admin/users/#{user.id}", user: user)
+
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", user: user, changeset: changeset)
     end
@@ -55,6 +60,6 @@ defmodule VendyWeb.Admin.UserController do
 
     conn
     |> put_flash(:info, "User deleted successfully.")
-    |> redirect(to: admin_user_path(conn, :index))
+    |> redirect(to: "/admin/users/#{user.id}", user: user)
   end
 end
