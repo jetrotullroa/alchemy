@@ -1,0 +1,12 @@
+<%= form_for @conn, admin_session_path(@conn, :send_link), [as: :session], fn f -> %>
+
+  <div class="form-group">
+    <%= label f, :email, class: "control-label" %>
+    <%= text_input f, :email, class: "form-control" %>
+    <%= error_tag f, :email %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Send login link", class: "btn btn-primary" %>
+  </div>
+<% end %>
