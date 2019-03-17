@@ -101,4 +101,8 @@ defmodule Vendy.Administration do
   def change_user(%User{} = user) do
     User.changeset(user, %{})
   end
+
+  def get_admin_by_email(email) do
+    Repo.get_by(User, email: email)
+  end
 end
