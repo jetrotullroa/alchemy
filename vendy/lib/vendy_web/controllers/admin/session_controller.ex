@@ -1,6 +1,8 @@
 defmodule VendyWeb.Admin.SessionController do
   use VendyWeb, :controller
   alias Vendy.Administration
+  import Phoenix.HTML.Link, only: [link: 2]
+
   plug(:set_layout)
 
   def new(conn, _params), do: render(conn, "new.html")
@@ -35,7 +37,7 @@ defmodule VendyWeb.Admin.SessionController do
         link = generate_login_link(conn, admin)
 
         conn
-        |> put_flash(:info, "Your magic login link is... #{link}")
+        |> put_flash(:info, ["Login using your magic link: ", link("Click me!", to: "#{link}")])
         |> render("new.html")
     end
   end
